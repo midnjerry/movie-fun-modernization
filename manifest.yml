@@ -1,0 +1,11 @@
+---
+applications:
+  - name: moviefun
+    path: build/libs/moviefun-1.1.0-SNAPSHOT.war
+    routes:
+      - route: moviefun-jerry.cfapps.io
+    services:
+      - photo-storage
+      - movies-mysql
+      - paper-trail
+      - rabbit
