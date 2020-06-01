@@ -26,9 +26,9 @@ public class CoverCatalog {
         logger.debug("Uploading cover for album with id {}", albumId);
 
         Blob coverBlob = new Blob(
-                coverBlobName(albumId),
-                inputStream,
-                contentType
+            coverBlobName(albumId),
+            inputStream,
+            contentType
         );
 
         blobStore.put(coverBlob);

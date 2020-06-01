@@ -48,8 +48,7 @@ public class AlbumsController {
 
         if (uploadedFile.getSize() > 0) {
             try {
-                tryToUploadCover(albumId, uploadedFile);
-
+                coverCatalog.uploadCover(albumId, uploadedFile.getInputStream(), uploadedFile.getContentType());
             } catch (IOException e) {
                 logger.warn("Error while uploading album cover", e);
             }
@@ -59,7 +58,7 @@ public class AlbumsController {
     }
 
     @GetMapping("/{albumId}/cover")
-    public HttpEntity<byte[]> getCover(@PathVariable long albumId) throws IOException, URISyntaxException {
+    public HttpEntity<byte[]> getCover(@PathVariable long albumId) throws IOException {
         Blob coverBlob = coverCatalog.getCover(albumId);
 
         byte[] imageBytes = IOUtils.toByteArray(coverBlob.inputStream);
@@ -69,10 +68,5 @@ public class AlbumsController {
         headers.setContentLength(imageBytes.length);
 
         return new HttpEntity<>(imageBytes, headers);
-    }
-
-
-    private void tryToUploadCover(@PathVariable Long albumId, @RequestParam("file") MultipartFile uploadedFile) throws IOException {
-        coverCatalog.uploadCover(albumId, uploadedFile.getInputStream(), uploadedFile.getContentType());
     }
 }
