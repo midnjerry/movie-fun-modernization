@@ -19,3 +19,10 @@ albums:
   url: //album-service/albums
 movies:
   url: //movie-service/movies
+
+# Exposes Circuit Breaker - security risk
+management:
+  endpoints.web.exposure.include: health,metrics,circuitbreakers
+  endpoint.health.show.details: always
+  health.circuitbreakers.enabled: true
+  hystrix.enabled: false
