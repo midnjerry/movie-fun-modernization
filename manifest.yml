@@ -1,7 +1,7 @@
 ---
 applications:
   - name: moviefun
-    path: build/libs/moviefun-1.1.0-SNAPSHOT.war
+    path: applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war
     routes:
       - route: moviefun-jerry.cfapps.io
     services:
