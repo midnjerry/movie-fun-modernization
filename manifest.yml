@@ -7,3 +7,5 @@ applications:
     services:
       - photo-storage
       - movies-mysql
+      - paper-trail
+      - rabbit
